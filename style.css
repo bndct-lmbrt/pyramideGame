@@ -1,0 +1,39 @@
+body {
+	background-color: #80cbc4;
+	font-family: arial;
+	margin: 200px;
+	padding: 0px;
+	color: #006064;
+}
+
+header {
+	background-color: #00bcd4;
+	height: 6em;
+}
+
+header h1, footer p {
+	margin: 0px;
+	padding: 10px;
+}
+
+h2.resultat, p.message, form {
+	border:1px solid black;
+	width: 40%;
+	padding: 30px;
+	margin: auto;
+	text-align: center;
+	background: #ccc;
+}
+
+p.message {
+	display: block;
+	background: #eee;
+}
+
+form {
+	margin-top: 10px;
+}
+
+input {
+	height: 20px;
+}
