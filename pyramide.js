@@ -1,25 +1,35 @@
-const words = ['canapé', 'traîneau', 'étoilé', 'vertigineux', 'fermentation']
-const tirage = Math.floor(Math.random() * words.length)
+// tryAgain : String -> String 
+const tryAgain = (clue) => {
+	displayClue(clue)
+	return 'essaie encore'
+}
 
-const words = ['cochon', 'paragraphe', 'poubelle', 'amplificateur', 'tasse']
-const cochon = ['animal', 'tire-bouchon', 'pue', 'rose', 'porc']
-const paragraphe = ['texte', 'morceau', 'guillemet', 'paramètre', 'aérographe']
-const poubelle = ['déchet', 'boîte', 'sac', 'camion', 'moche']
-const amplificateur = ['son', 'augmenter', 'basses', 'démultiplicateur']
-const tasse = ['contenant', 'thé', 'anse', 'soucoupe', 'pé']
+// displayClue : String -> undefined
+const displayClue = (clue) => {
+	document.querySelector('h2.resultat')
+	  .innerText = clue
+}
+
+const displayVerification = (msg) => {
+	document.querySelector('h2.verification')
+		.innerText = msg 
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-	// Here the html page is loaded
-	const htmlResult = document.querySelector('h2.resultat')
-	htmlResult.innerText = words[tirage]
+	const wordToFind = {word:'cochon', clue:['animal', 'tire-bouchon', 'pue', 'rose', 'porc']}
+	const clues = wordToFind.clue
+	const words = wordToFind.word
+	let round = 0
 
+	displayClue(clues[round])
+	
 	const htmlGo = document.querySelector('button')
 	htmlGo.onclick = evt => {
-		// To prevent an automatic page reload
 		evt.preventDefault()
 		const answer = document.querySelector('input').value
-		console.log('Ta réponse : ', answer)
+		round = round + 1
+		const sentence = answer === words ? 'gagné' : tryAgain(clues[round])
+		displayVerification(sentence)
 	}
 })
-
 
